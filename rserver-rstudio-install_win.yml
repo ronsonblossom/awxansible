@@ -1,0 +1,7 @@
+- name: Rserver installation windows
+  hosts: windows
+  tasks:
+    - name: R server - copy exe file 
+      win_copy:
+        src: /var/lib/awx/projects/_9__pocproject001/RServerSetup.exe
+        dest: c:\RServerSetup.exe
