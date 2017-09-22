@@ -5,3 +5,7 @@
       win_copy:
         src: /var/lib/awx/projects/_9__pocproject001/RServerSetup.exe
         dest: c:\RServerSetup.exe
+    - name: R server - installation
+      win_package:
+        path: c:\RServerSetup.exe
+        arguments: /quiet /models
