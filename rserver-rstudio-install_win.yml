@@ -1,5 +1,5 @@
 - name: Rserver installation windows
-  hosts: windows
+  hosts: all
   tasks:
     - name: R server - copy exe file 
       win_copy:
