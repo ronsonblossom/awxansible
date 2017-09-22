@@ -8,4 +8,5 @@
     - name: R server - installation
       win_package:
         path: c:\RServerSetup.exe
+        product_id: {2E622EDF-0961-4F3A-80CA-8B3410FFF8E4}
         arguments: /quiet /models
