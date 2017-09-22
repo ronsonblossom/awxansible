@@ -1,0 +1,10 @@
+[linux]
+10.0.2.4
+[windows]
+10.0.2.5
+[windows:vars]
+ansible_ssh_user=vmadmin
+ansible_ssh_pass=Welcome@12345
+ansible_ssh_port=5986
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
