@@ -13,3 +13,14 @@
         creates_version: 9.0.1.0
         arguments: /quiet /models
         state: present
+    - name: R Studio - copy exe file
+      win_copy:
+        src: /var/lib/awx/projects/_9__pocproject001/RStudio-1.0.153.exe
+        dest: c:\RStudio-1.0.153.exe
+    - name: R Studio - installation
+      win_package:
+        name: RStudio
+        path: c:\RStudio-1.0.153.exe
+        arguments: /S
+        creates_version: 1.0.153
+        product_id: "RStudio"
