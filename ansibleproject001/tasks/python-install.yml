@@ -1,0 +1,26 @@
+- name: Python installation
+  hosts: all
+  become: true
+  tasks:
+    - name: Installing python, if not installed
+      apt:
+            name: python2.7
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
+    - name: Installing python development , if not installed
+      apt:
+            name: python-dev
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
+    - name: Installing python pip , if not installed
+      apt:
+            name: python-pip
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
+    - name: Upgrading pip , if not upgraded
+      pip:
+            name: pip
+            extra_args: --upgrade

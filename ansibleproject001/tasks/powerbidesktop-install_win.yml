@@ -1,0 +1,9 @@
+- name: Power BI desktop installation windows
+  hosts: windows_all
+  tasks:
+    - name: "Microsoft Power BI Desktop installation"
+      win_package:
+        path: https://download.microsoft.com/download/9/B/A/9BAEFFEF-1A68-4102-8CDF-5D28BFFE6A61/PBIDesktop.msi
+        product_id: "A232CF59-23A6-4267-8062-B9510C2627BB"
+        state: present
+        arguments:  '/qn /norestart ACCEPT_EULA=1'

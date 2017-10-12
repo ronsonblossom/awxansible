@@ -1,0 +1,35 @@
+- name: Rserver installation
+  hosts: all
+  become: true
+  tasks:
+    - name: Adding Apt signing key, if not added
+      apt_key:
+            id: E084DAB9
+            keyserver: keyserver.ubuntu.com
+            state: present
+    - name: Adding repo, if not added
+      apt_repository:
+            repo: deb https://ftp.ussg.iu.edu/CRAN/bin/linux/ubuntu xenial/
+            state: present
+            filename: 'rservers'
+            update_cache: yes
+    - name: Installing r-base, if not installed
+      apt:
+            name: r-base
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
+    - name: Installing r-base-dev, if not installed
+      apt:
+            name: r-base-dev
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
+    - name: Downloading rstudio, if not downloaded
+      get_url:
+            url: https://download1.rstudio.org/rstudio-1.0.44-amd64.deb
+            dest: /tmp/rstudio-1.0.44-amd64.deb
+    - name: Installing rstudio, if not installed
+      apt:
+            deb: /tmp/rstudio-1.0.44-amd64.deb
+            state: present

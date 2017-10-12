@@ -1,0 +1,7 @@
+- name: Jupyter installation
+  hosts: linux_all
+  become: true
+  tasks:
+    - name: Installing jupyter, if not installed
+      pip:
+            name: jupyter

@@ -1,0 +1,26 @@
+- name: Rserver installation windows
+  hosts: all
+  tasks:
+    - name: R server - copy exe file 
+      win_copy:
+        src: /var/lib/awx/projects/_9__pocproject001/RServerSetup.exe
+        dest: c:\RServerSetup.exe
+    - name: R server - installation
+      win_package:
+        name: Microsoft R Server
+        path: c:\RServerSetup.exe
+        product_id: '{2E622EDF-0961-4F3A-80CA-8B3410FFF8E4}'
+        creates_version: 9.0.1.0
+        arguments: /quiet /models
+        state: present
+    - name: R Studio - copy exe file
+      win_copy:
+        src: /var/lib/awx/projects/_9__pocproject001/RStudio-1.0.153.exe
+        dest: c:\RStudio-1.0.153.exe
+    - name: R Studio - installation
+      win_package:
+        name: RStudio
+        path: c:\RStudio-1.0.153.exe
+        arguments: /S
+        creates_version: 1.0.153
+        product_id: "RStudio"

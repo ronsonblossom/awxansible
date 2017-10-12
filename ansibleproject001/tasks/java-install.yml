@@ -1,0 +1,14 @@
+- name: Java installation
+  hosts: all
+  become: true
+  tasks:
+    - name: Installing Java, if not installed
+      apt:
+            name: default-jre
+            state: present
+            update_cache: yes
+    - name: setting java_home
+      lineinfile:
+            path: /etc/environment
+            regexp: '^JAVA_HOME='
+            line: 'JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64'

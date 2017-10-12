@@ -1,3 +1,3 @@
 ---
-- include: zeppelin-install.yml
+- import_playbook: zeppelin-install.yml
 # tasks file for ansibleproject001

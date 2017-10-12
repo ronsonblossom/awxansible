@@ -7,19 +7,22 @@
             path: /opt/zeppelin
             state: directory
             mode: 0755
-#    - name: downloading and extracting zeppelin tarball
-#      unarchive:
-#            src: http://www-eu.apache.org/dist/zeppelin/zeppelin-0.7.3/zeppelin-0.7.3-bin-all.tgz
-#            dest: /opt/zeppelin
-#            remote_src: yes
+    - name: downloading and extracting zeppelin tarball
+      unarchive:
+            src: http://www-eu.apache.org/dist/zeppelin/zeppelin-0.7.3/zeppelin-0.7.3-bin-all.tgz
+            dest: /opt/zeppelin
+            creates: /opt/zeppelin/zeppelin-0.7.3-bin-all
+            remote_src: yes
     - name: Copy the Zeppelin systemd service file
-      copy:
-            src: zeppelin.service
+      template:
+            src: etc/systemd/system/zeppelin.service.j2
             dest: /etc/systemd/system/zeppelin.service
-#      template:
-#            src: zeppelin.service.j2
-#            dest: /tmp/zeppelin.service
-#            mode: 0644
-#            owner: root
-#            group: root
-     
+            mode: 0644
+            owner: root
+            group: root
+    - name: enable Zeppelin service
+      systemd:
+            name: zeppelin.service
+            state: started
+            enabled: true
+            daemon_reload: yes
