@@ -1,0 +1,15 @@
+- name: spark installation
+  hosts: linux_all
+  become: true
+  tasks:
+    - name: creating spark folder
+      file:
+            path: /opt/spark
+            state: directory
+            mode: 0755
+    - name: downloading and extracting spark tarball
+      unarchive:
+            src: https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
+            dest: /opt/spark
+            creates: /opt/zeppelin/spark-2.2.0-bin-hadoop2.7
+            remote_src: yes
