@@ -1,0 +1,8 @@
+- name: scala installation
+  hosts: linux_all
+  become: true
+  tasks:
+    - name: Installing scala, if not installed
+      apt:
+            deb: http://downloads.lightbend.com/scala/2.12.1/scala-2.12.1.deb
+            state: present

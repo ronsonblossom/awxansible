@@ -1,0 +1,21 @@
+- name: sbt installation
+  hosts: linux_all
+  become: true
+  tasks:
+    - name: Adding Apt signing key, if not added
+      apt_key:
+            id: 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+            keyserver: keyserver.ubuntu.com
+            state: present
+    - name: Adding repo, if not added
+      apt_repository:
+            repo: deb https://dl.bintray.com/sbt/debian /
+            state: present
+            filename: 'sbt'
+            update_cache: yes
+    - name: Installing sbt, if not installed
+      apt:
+            name: sbt
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
