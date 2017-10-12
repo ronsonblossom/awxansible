@@ -1,0 +1,16 @@
+Description=Apache Zeppelin
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+ExecStart=/opt/zeppelin/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh start
+ExecStop=/opt/zeppelin/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh stop
+ExecRestart=/opt/zeppelin/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh restart
+ExecStatus=/opt/zeppelin/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh status
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

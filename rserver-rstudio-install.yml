@@ -1,5 +1,5 @@
 - name: Rserver installation
-  hosts: linux_all
+  hosts: all
   become: true
   tasks:
     - name: Adding Apt signing key, if not added

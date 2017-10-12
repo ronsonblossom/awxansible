@@ -1,5 +1,5 @@
 - name: ipython installation
-  hosts: linux_all
+  hosts: all
   become: true
   tasks:
     - name: Installing ipython, if not installed

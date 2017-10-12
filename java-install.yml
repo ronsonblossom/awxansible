@@ -1,5 +1,5 @@
 - name: Java installation
-  hosts: linux_all
+  hosts: all
   become: true
   tasks:
     - name: Installing Java, if not installed

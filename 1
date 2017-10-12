@@ -13,13 +13,9 @@
 #            dest: /opt/zeppelin
 #            remote_src: yes
     - name: Copy the Zeppelin systemd service file
-      copy:
-            src: zeppelin.service
-            dest: /etc/systemd/system/zeppelin.service
-#      template:
-#            src: zeppelin.service.j2
-#            dest: /tmp/zeppelin.service
-#            mode: 0644
-#            owner: root
-#            group: root
-     
+      template:
+            src: zeppelin.service.j2
+            dest: /tmp/zeppelin.service
+            mode: 0644
+            owner: root
+            group: root
