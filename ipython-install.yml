@@ -1,0 +1,16 @@
+- name: ipython installation
+  hosts: all
+  become: true
+  tasks:
+    - name: Installing ipython, if not installed
+      apt:
+            name: ipython 
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes
+    - name: Installing ipython-notebook, if not installed
+      apt:
+            name: ipython-notebook 
+            allow_unauthenticated: yes
+            state: present
+            update_cache: yes

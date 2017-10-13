@@ -1,0 +1,9 @@
+- name: Tableau desktop installation windows
+  hosts: windows_all
+  tasks:
+    - name: "Tableau Desktop installation"
+      win_package:
+        path: https://downloads.tableau.com/public/TableauPublicDesktop-64bit-10-4-0.exe
+        product_id: "BEA275FE-7405-48EC-B39C-4C2829AFCEB8"
+        state: present
+        arguments:  '/install /quiet /norestart ACCEPTEULA=1'
